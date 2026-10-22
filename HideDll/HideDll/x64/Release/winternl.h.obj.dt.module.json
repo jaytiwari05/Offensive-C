@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "HideDll\\x64\\Release\\winternl.obj",
+            "outputs": [
+                "HideDll\\x64\\Release\\winternl.h.obj.dt.module.json",
+                "HideDll\\x64\\Release\\winternl.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="HideDll.vcxproj" Id="1b211213-1cb9-446f-9872-db005a6459c6" />
+</Solution>
