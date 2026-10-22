@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "j:\\course\\c_code\\hidedll\\hidedll.cpp",
+        "Source": "j:\\project\\github\\offensive-c\\hidedll\\hidedll.cpp",
         "ProvidedModule": "",
         "Includes": [
             "j:\\tools\\phnt\\phnt_windows.h",

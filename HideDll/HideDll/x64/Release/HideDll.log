@@ -1,7 +1,7 @@
 ﻿  HideDll.cpp
   Generating code
-  3 of 10 functions (30.0%) were compiled, the rest were copied from previous compilation.
+  8 of 10 functions (80.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  HideDll.vcxproj -> J:\Course\C_Code\HideDll\x64\Release\HideDll.exe
+  HideDll.vcxproj -> J:\Project\Github\Offensive-C\HideDll\x64\Release\HideDll.exe

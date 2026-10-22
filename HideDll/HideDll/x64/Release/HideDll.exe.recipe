@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>J:\Course\C_Code\HideDll\x64\Release\HideDll.exe</FullPath>
+      <FullPath>J:\Project\Github\Offensive-C\HideDll\x64\Release\HideDll.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
