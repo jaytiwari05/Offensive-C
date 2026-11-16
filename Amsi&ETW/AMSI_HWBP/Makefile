@@ -1,13 +1,12 @@
-CC      = x86_64-w64-mingw32-gcc
-CFLAGS  = -Wall -Wextra -O2
-LDFLAGS = -lole32
-TARGET  = amsi_hwbp.exe
-SRC     = amsi_hwbp.c
+CC = x86_64-w64-mingw32-gcc.exe
+CFLAGS = -static-libgcc -ffunction-sections -fdata-sections -Wl,--gc-sections -fno-ident -s
+TARGET = amsi_hwbp.exe
+SRC = amsi_hwbp.c 
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
+$(TARGET) : $(SRC)
+	$(CC) -o $(TARGET) $(SRC) $(CFLAGS)
 
 clean:
 ifeq ($(OS),Windows_NT)

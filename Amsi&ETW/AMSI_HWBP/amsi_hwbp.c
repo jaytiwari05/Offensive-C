@@ -141,6 +141,7 @@ BOOL CheckAMSI(void) {
 int main()
 {
 
+    printf("[+] Patching AMSI via Hardware Breakpoint \n");
     HANDLE hAmsi = LoadLibraryA("amsi.dll");
     if (hAmsi == 0 )
     {
