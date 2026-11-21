@@ -11,7 +11,6 @@ typedef enum _EVENT_TYPE
     SynchronizationEvent
 } EVENT_TYPE;
 
-
 // Function Definiation 
 typedef struct _Win32 
 {
@@ -84,6 +83,7 @@ VOID ZilieanObf(DWORD sleeptime) {
         goto LEAVE;
     }
 
+    // This is the only Difference is Using is different API's
     /* let's start the rop part of this operation/sleep obf */
     if (NT_SUCCESS(Status = win32.RtlRegisterWait(&Timer, EvntWait, RtlCaptureContext, &CtxInit, Delay += 100, WT_EXECUTEONLYONCE | WT_EXECUTEINWAITTHREAD)))
     {
