@@ -210,7 +210,7 @@ VOID FoliageObf(PWIN32_API pWin32Api, ULONG dwTimeOut)
         }
     }
 
-    // Resume the thread — it starts draining its APC queue
+    // Resume the thread - it starts draining its APC queue
     if (!NT_SUCCESS(Status = pWin32Api->NtAlertResumeThread(Thread, NULL)))
     {
         printf("[-] NtAlertResumeThread Failed: %lx\n", Status);
@@ -220,7 +220,7 @@ VOID FoliageObf(PWIN32_API pWin32Api, ULONG dwTimeOut)
     printf("[*] Trigger obfuscation chain\n");
 
     // Signal the event (unlocks Ctx[0]) AND wait for the thread to finish
-    // This is atomic — signal + wait in one syscall
+    // This is atomic - signal + wait in one syscall
     if (!NT_SUCCESS(Status = pWin32Api->NtSignalAndWaitForSingleObject(
             EventSync, Thread, TRUE, NULL)))
     {
